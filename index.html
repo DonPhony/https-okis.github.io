@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>DON GAMBITO • Red</title>
+    <meta
+    name="description"
+    content="Un blog personal donde comparto ideas, experimentos, vídeos y aprendizajes de forma sencilla, humana y útil."
+  />
+  <!-- Open Graph -->
+    <meta property="og:title" content="Mi Blog Personal" />
+    <meta property="og:description" content="Ideas, vídeos y experimentos con un enfoque personal y útil."/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://i.postimg.cc/gk4DVNHr/videoframe-5015.png?q=80&w=1200&auto=format&fit=crop" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geostar&family=Goldman:wght@400;700&family=Electrolize&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+:root {
+--neon-yellow: #E7E52D
+;
+}
+body {
+margin: 0;
+padding: 0;
+font-family: 'Electrolize', system_ui, sans-serif;
+font-weight: 800;
+}
+.font-square {
+font-family: 'Electrolize', system_ui, sans-serif;
+font-weight: 800;
+letter-spacing: 0.02em;
+}
+.font-square-alt {
+font-family: system_ui, -apple-system, sans-serif;
+font-weight: 700;
+letter-spacing: 0.03em;
+}
+.neon-btn {
+background: #222222;
+/*
+box-shadow: 
+0 0 10px #ff2e63,
+0 0 20px #ff2e63,
+4px 4px 0 #000000,
+-1px -1px 0 #000000;*/
+transition: all 0.3s ease;
+transform: translateY(-16px);
+border: 2px solid #ff2e63;
+}
+.neon-btn:active {
+transform: translateY(12px);
+box-shadow: 
+0 0 5px #ff2e63,
+2px 2px 0 #000000;
+}
+.facebook-post {
+background-color: #fff;
+border: 1px solid #27272a;
+color: #121212;
+}
+.neon-text {
+text-shadow: 0 0 10px #ff2e63;
+}
+.tab-active {
+border-bottom: 3px solid #121212;
+color: #121212;
+}
+.story-card {
+transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1):
+}
+.modal {
+animation: fadeInScale 0.2s ease forwards;
+}
+.post-shadow {
+box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+header {
+padding: 0;
+top: 0;
+margin: 0;
+background: #333333;
+backdrop-filter: blur(1px);
+align-content: center;
+position: ;
+z-index: ;
+}
+.container {
+      position: relative;
+      width: 100%;
+      max-width: ;
+      padding: 2rem 1rem;
+      background: transparent;
+      backdrop-filter: blur(15px);
+      border-radius: 0px;
+      border: 1px solid rgba(255,255,255,0.06);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.7);
+      font-family: 'Geostar' system_ui, Sans-Serif;
+    }
+.nombre, .apellido {
+      font-family: 'Geostar', sans-serif;
+      font-size: 3.5rem;
+      font-style: normal;
+      letter-spacing: 0px;
+      margin: 0 0;
+      text-shadow: 0 0 12px currentColor,
+                   0 0 25px currentColor;
+      transition: color 1.2s ease, text-shadow 1.2s ease;
+    }
+.foto {
+width: 320px;
+height: 200px;
+border: 6px solid;
+box-shadow: 0 0 20px currentColor;
+transition: border-color 1.2s ease, box-shadow 1.2s ease;
+margin: auto auto;
+position: relative;
+z-index: ;
+overflow: hidden;
+    }
+.cover {
+width: 200%;
+height: 200%;
+object-fit: cover;
+position: relative;
+margin-top: -70px;
+}
+.btn {
+box-shadow: 
+0 4px 10px yellow,
+0 4px 5px #000000,
+0 4px 10px yellow,
+inset: 0px 50px;
+}
+</style>
+</head>
+<body class="w-screen max-h-dvh bg-zinc-100 text-zinc-900">
+    <!-- HEADER -->
+<header class="w-full h-[500px] border-zinc-200 bg-zinc-900 top-0">
+<div id="container" class="container w-full h-[400px] items-center sticky top-0 z-50">
+<div id="nombre" class="nombre">Smaily</div>
+<div id="foto" class="foto rounded-md">
+    <img class="cover" src="https://i.postimg.cc/bNdG5gjm/d4b936ecc2c939f4fa.png" alt="#Foto de perfil"></div>
+       <div id="apellido" class="apellido">Chickles
+       </div>
+    </div>
+<br>
+<div class="flex items-center gap-x-3 px-2 justify-between">
+<!-- Owner Status -->
+<div id="owner-status"  class="w-auto h-auto px-4 py-4 text-1xl text-emerald-500 rounded-lg bg-zinc-900 border-2 border-zinc-500 flex items-center gap-x-2">
+<div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+    <span class="text-emerald-400 text-1xl font-medium">MODO VISITANTE
+    </span>
+</div>
+<button onclick="simulateMagicLink()" class="btn px-4 py-4 text-1xl font-bold rounded-lg bg-zinc-800 text-zinc-100 border-2 border-zinc-500 transition-colors">
+<i class="fa-solid fa-link mr-2"></i>
+<span><b><b>ACCESS ADMIN</b></b></span>
+</button>
+</div></header>
+<script>
+    // === COLORES NEÓN ===
+    const colores = ['#ff00aa', '#00f3ff', '#aa00ff', '#00ffaa', '#ffaa00', '#00aaff',  '#ff00aa', '#00f3ff', '#A5F2A2', '#FFF70B',  '#ffaa00', '#00aaff', '#F473C6', '#FFEA23', '#00ffaa', '#D468D7', '#A0FFCC', '#DE434B', '#363034', '#A5F2A2', '#3585E4', '#A52031'];
+    let indice = 0;
+
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const foto = document.getElementById('foto');
+
+    function cambiarColor() {
+      const color = colores[indice];
+      
+      nombre.style.color = color;
+      apellido.style.color = color;
+      foto.style.borderColor = color;
+      foto.style.boxShadow = `0 0 50px ${color}`;
+
+      // Actualizar color de partículas
+      if (window.particles) window.particles.color = color;
+
+      indice = (indice + 1) % colores.length;
+    }
+
+    // Iniciar colores
+    nombre.style.color = colores[0];
+    apellido.style.color = colores[0];
+    foto.style.borderColor = colores[0];
+    foto.style.boxShadow = `0 0 20px ${colores[0]}`;
+
+    setInterval(cambiarColor, 5000);
+
+    // === SISTEMA DE PARTÍCULAS NEÓN ===
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let particlesArray = [];
+    let particleColor = colores[0];
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1 + 2;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 0.6 - 0.3;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = particleColor;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = particleColor;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 62);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < 265; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.particles = { color: colores[0] };
+    Object.defineProperty(window.particles, 'color', {
+      set: function(val) {
+        particleColor = val;
+      }
+    });
+
+    initParticles();
+    animateParticles();
+  </script>
+</div></div>
+    <!-- TABS -->
+    <div class="max-w-6xl mx-auto px-6 pt-6 overflow-x-auto">
+        <div class="flex border-b border-zinc-800">
+            <button onclick="switchTab(0)" class="tab-btn px-6 py-3 font-medium flex items-center gap-x-2 tab-active" data-tab="0">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>Posts</span>
+            </button>
+            <button onclick="switchTab(1)" class="tab-btn px-6 py-3 font-medium flex items-center gap-x-2 text-zinc-400 hover:text-zinc-200" data-tab="1">
+                <i class="fa-solid fa-clock"></i>
+                <span>Stories</span>
+            </button>
+            <button onclick="switchTab(2)" class="tab-btn px-6 py-3 font-medium flex items-center gap-x-2 text-zinc-400 hover:text-zinc-200" data-tab="2">
+                <i class="fa-solid fa-comment-dots"></i>
+                <span>Mensajes</span>
+            </button>
+            <button onclick="switchTab(3)" class="tab-btn px-6 py-3 font-medium flex items-center gap-x-2 text-zinc-400 hover:text-zinc-200" data-tab="3">
+                <i class="fa-brands fa-youtube"></i>
+                <span>YouTube</span>
+            </button>
+            <button onclick="switchTab(4)" class="tab-btn px-6 py-3 font-medium flex items-center gap-x-2 text-zinc-400 hover:text-zinc-200" data-tab="4">
+                <i class="fa-solid fa-user"></i>
+                <span>Sobre mí</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="max-w-6xl mx-auto px-6 py-8">
+        
+        <!-- TAB 1: POSTS -->
+        <div id="tab-0" class="tab-content">
+            <div class="max-w-2xl mx-auto">
+                <!-- Composer -->
+                <div class="facebook-post rounded-3xl p-5 mb-6 border border-zinc-800" id="post-composer">
+                    <div class="flex gap-x-3">
+                        <div class="w-10 h-10 bg-zinc-700 rounded-full flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <textarea id="post-text" placeholder="¿Qué estás pensando, Don Gambito?" 
+                                      class="w-full bg-transparent resize-none text-lg placeholder:text-zinc-500 focus:outline-none"></textarea>
+                            
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="flex gap-x-2">
+                                    <label class="cursor-pointer px-3 py-1.5 text-sm flex items-center gap-x-2 hover:bg-zinc-800 rounded-xl transition-colors">
+                                        <i class="fa-solid fa-image text-[#ff2e63]"></i>
+                                        <span class="text-xs">Foto/Video</span>
+                                        <input type="file" id="post-media" accept="image/*,video/*" class="hidden" onchange="previewMedia(this)">
+                                    </label>
+                                </div>
+                                
+                                <button onclick="createPost()" 
+                                        class="neon-btn px-6 py-2 text-white text-1xl font-semibold rounded-md flex border-2 border-zinc-800 items-center gap-x-2">
+                                    <span>Publicar</span>
+                                </button>
+                            </div>
+                            <div id="media-preview" class="mt-3 hidden"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Posts Feed -->
+                <div id="posts-feed" class="space-y-4"></div>
+            </div>
+        </div>
+
+        <!-- TAB 2: STORIES -->
+        <div id="tab-1" class="tab-content hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6">
+                    <h3 class="font-square text-2xl mb-1">Stories • 24h</h3>
+                    <p class="text-zinc-400 text-sm">Desaparecen automáticamente después de un día</p>
+                </div>
+                
+                <!-- Story Composer -->
+                <div class="facebook-post rounded-3xl p-5 mb-8">
+                    <div class="flex gap-x-3 items-center">
+                        <div class="flex-1">
+                            <input id="story-text" type="text" placeholder="¿Qué sientes ahora?" 
+                                   class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:outline-none">
+                        </div>
+                        <select id="story-emoji" class="bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-sm">
+                            <option value="😴">Insomnio 😴</option>
+                            <option value="💀">Morido 💀</option>
+                            <option value="🔥">En llamas 🔥</option>
+                            <option value="🌙">Noche 🌙</option>
+                            <option value="⚡">Energía ⚡</option>
+                        </select>
+                        <button onclick="createStory()" class="neon-btn px-5 py-3 rounded-2xl text-sm font-semibold">Publicar</button>
+                    </div>
+                </div>
+
+                <!-- Stories Grid -->
+                <div id="stories-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            </div>
+        </div>
+
+        <!-- TAB 3: MENSAJES -->
+        <div id="tab-2" class="tab-content hidden">
+            <div class="max-w-2xl mx-auto">
+                <div class="facebook-post rounded-3xl p-5 mb-6">
+                    <textarea id="message-text" placeholder="Escribe un mensaje como cita..." 
+                              class="w-full bg-transparent resize-none h-20 text-lg placeholder:text-zinc-500 focus:outline-none"></textarea>
+                    <div class="flex justify-end mt-2">
+                        <button onclick="createMessage()" class="neon-btn px-6 py-2 text-sm font-semibold rounded-2xl">Publicar mensaje</button>
+                    </div>
+                </div>
+                
+                <div id="messages-feed" class="space-y-3"></div>
+            </div>
+        </div>
+
+        <!-- TAB 4: YOUTUBE -->
+        <div id="tab-3" class="tab-content hidden">
+            <div class="max-w-4xl mx-auto">
+                <div class="facebook-post rounded-3xl p-5 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input id="yt-url" type="text" placeholder="URL de YouTube" class="col-span-2 bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-sm">
+                        <input id="yt-desc" type="text" placeholder="Descripción o comentario" class="col-span-3 bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-sm">
+                        <button onclick="addYoutubeVideo()" class="neon-btn col-span-3 md:col-span-1 py-3 rounded-2xl font-semibold">Agregar video</button>
+                    </div>
+                </div>
+                
+                <div id="youtube-feed" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SOBRE MÍ -->
+        <div id="tab-4" class="tab-content hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="facebook-post rounded-3xl overflow-hidden">
+                    <!-- Banner -->
+                    <div class="h-48 bg-zinc-800 relative">
+                        <img id="profile-banner" src="https://picsum.photos/id/1015/1200/400" class="w-full h-full object-cover">
+                        <div class="absolute bottom-4 right-4">
+                            <button onclick="changeBanner()" class="neon-btn px-4 py-2 text-xs rounded-2xl">Cambiar banner</button>
+                        </div>
+                    </div>
+                    
+                    <div class="px-8 pb-8 pt-6">
+                        <div class="flex items-end gap-x-4 -mt-8">
+                            <div class="w-24 h-24 bg-zinc-700 border-4 border-zinc-900 rounded-2xl overflow-hidden">
+                                <img src="https://picsum.photos/id/1005/200/200" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h2 class="font-square text-4xl">DON GAMBITO</h2>
+                                <p class="text-zinc-400">@dongambito</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <div class="text-xs text-zinc-400 mb-1">BIOGRAFÍA</div>
+                                <p class="text-sm">Creador de contenido. Amante de la noche, el arte y los juegos de estrategia.</p>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-400 mb-1">UBICACIÓN</div>
+                                <p class="text-sm">Ciudad de México</p>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-400 mb-1">ENLACES</div>
+                                <div class="flex gap-x-3 text-sm">
+                                    <a href="#" class="hover:text-[#ff2e63]">Instagram</a>
+                                    <a href="#" class="hover:text-[#ff2e63]">Twitter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="media-modal" onclick="closeModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" class="max-w-5xl w-full mx-4">
+            <div id="modal-content" class="rounded-3xl overflow-hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CONFIGURACIÓN SUPABASE ====================
+      const SUPABASE_URL = 'https://lurtwxbeekhdfvkespoi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1cnR3eGJlZWtoZGZ2a2VzcG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5Nzc3MzgsImV4cCI6MjEwNDU1MzczOH0.83SZ7UvEFPqs6kFO4rvb61qJ516GMcfeCZfPO0zlGp0';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const OWNER_USER_ID = '761b4abf-1bca-4cb9-81d2-5936d97bc46d';
+        
+
+        let currentUser = null;
+        let isOwner = false;
+
+        // ==================== AUTENTICACIÓN ====================
+        async function loginWithMagicLink() {
+            const email = prompt("Ingresa tu email:");
+            if (!email) return;
+            const { error } = await supabase.auth.signInWithOtp({ email });
+            if (error) alert("Error: " + error.message);
+            else alert("Revisa tu correo. Se ha enviado el enlace mágico.");
+        }
+
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                currentUser = user;
+                isOwner = user.id === OWNER_USER_ID;
+                document.getElementById('owner-status').innerHTML = `
+                    <div class="w-2 h-2 ${isOwner ? 'bg-[#ff2e63]' : 'bg-emerald-500'} rounded-full"></div>
+                    <span class="${isOwner ? 'text-[#ff2e63]' : 'text-emerald-400'} text-xs font-medium">
+                        ${isOwner ? 'Owner conectado' : 'Visitante'}
+                    </span>
+                `;
+            }
+        }
+
+        // ==================== POSTS ====================
+        async function loadPosts() {
+            const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
+            if (data) renderPosts(data);
+        }
+
+        async function createPost() {
+            if (!isOwner) return alert("Solo el owner puede publicar.");
+            const content = document.getElementById('post-text').value.trim();
+            if (!content) return;
+
+            await supabase.from('posts').insert({
+                user_id: currentUser.id,
+                content: content
+            });
+            document.getElementById('post-text').value = '';
+            loadPosts();
+        }
+
+        function renderPosts(posts) {
+            const container = document.getElementById('posts-feed');
+            container.innerHTML = '';
+            posts.forEach(post => {
+                const el = document.createElement('div');
+                el.className = `facebook-post rounded-3xl p-5`;
+                el.innerHTML = `
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-9 h-9 bg-zinc-700 rounded-full"></div>
+                        <div><span class="font-semibold">DON GAMBITO</span></div>
+                    </div>
+                    <p>${post.content}</p>
+                    <div class="flex justify-between mt-5 pt-4 border-t border-zinc-800">
+                        <button onclick="likePost(${post.id})" class="flex items-center gap-x-2 text-sm">
+                            <i class="fa-solid fa-heart"></i> <span>${post.likes || 0}</span>
+                        </button>
+                        <button onclick="sharePost()" class="flex items-center gap-x-2 text-sm">Compartir</button>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        async function likePost(id) {
+            const { data } = await supabase.from('posts').select('likes').eq('id', id).single();
+            await supabase.from('posts').update({ likes: (data.likes || 0) + 1 }).eq('id', id);
+            loadPosts();
+        }
+
+        // ==================== STORIES ====================
+        async function createStory() {
+            if (!isOwner) return alert("Solo el owner puede publicar.");
+            const content = document.getElementById('story-text').value;
+            const emoji = document.getElementById('story-emoji').value;
+            await supabase.from('stories').insert({ user_id: currentUser.id, content, emoji });
+            loadStories();
+        }
+
+        async function loadStories() {
+            const { data } = await supabase.from('stories').select('*').order('created_at', { ascending: false });
+            const now = new Date();
+            const valid = data.filter(s => (now - new Date(s.created_at)) < 86400000);
+            renderStories(valid);
+        }
+
+        function renderStories(stories) {
+            const container = document.getElementById('stories-grid');
+            container.innerHTML = '';
+            stories.forEach(story => {
+                const el = document.createElement('div');
+                el.className = `facebook-post rounded-3xl p-5 h-44 flex flex-col justify-between`;
+                el.innerHTML = `
+                    <div><span class="text-4xl">${story.emoji}</span></div>
+                    <div>
+                        <p class="text-sm">${story.content}</p>
+                        <button onclick="likeStory(${story.id}, this)" class="text-xs mt-3 px-3 py-1 rounded-full bg-zinc-800">❤️</button>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function likeStory(id, el) {
+            el.innerHTML = '❤️';
+        }
+
+        // ==================== MENSAJES ====================
+        async function loadMessages() {
+            const { data } = await supabase.from('messages').select('*').order('created_at', { ascending: false });
+            if (data) renderMessages(data);
+        }
+
+        async function createMessage() {
+            if (!isOwner) return alert("Solo el owner puede publicar.");
+            const content = document.getElementById('message-text').value.trim();
+            if (!content) return;
+
+            await supabase.from('messages').insert({
+                user_id: currentUser.id,
+                content: content
+            });
+            document.getElementById('message-text').value = '';
+            loadMessages();
+        }
+
+        function renderMessages(messages) {
+            const container = document.getElementById('messages-feed');
+            container.innerHTML = '';
+            messages.forEach(msg => {
+                const el = document.createElement('div');
+                el.className = `facebook-post rounded-3xl p-6 border-l-4 border-[#ff2e63]`;
+                el.innerHTML = `
+                    <p class="italic text-lg">"${msg.content}"</p>
+                    <div class="flex justify-between items-center mt-5">
+                        <span class="text-xs text-zinc-500">— DON GAMBITO</span>
+                        <div class="flex gap-x-4 text-sm">
+                            <button onclick="likeMessage(${msg.id}, this)">
+                                <i class="fa-solid fa-heart"></i> <span>${msg.likes || 0}</span>
+                            </button>
+                            <button onclick="sharePost()">Compartir</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        async function likeMessage(id, element) {
+            const { data } = await supabase.from('messages').select('likes').eq('id', id).single();
+            await supabase.from('messages').update({ likes: (data.likes || 0) + 1 }).eq('id', id);
+            loadMessages();
+        }
+
+        // ==================== YOUTUBE ====================
+        async function loadYoutube() {
+            const { data } = await supabase.from('youtube').select('*').order('created_at', { ascending: false });
+            if (data) renderYoutube(data);
+        }
+
+        async function addYoutubeVideo() {
+            if (!isOwner) return alert("Solo el owner puede agregar videos.");
+            const url = document.getElementById('yt-url').value.trim();
+            const desc = document.getElementById('yt-desc').value.trim();
+            if (!url) return;
+
+            let videoId = url.split('v=')[1] || url.split('/').pop();
+            if (videoId.includes('&')) videoId = videoId.split('&')[0];
+
+            await supabase.from('youtube').insert({
+                user_id: currentUser.id,
+                url: `https://www.youtube.com/embed/${videoId}`,
+                description: desc || "Video recomendado"
+            });
+
+            document.getElementById('yt-url').value = '';
+            document.getElementById('yt-desc').value = '';
+            loadYoutube();
+        }
+
+        function renderYoutube(videos) {
+            const container = document.getElementById('youtube-feed');
+            container.innerHTML = '';
+            videos.forEach(video => {
+                const el = document.createElement('div');
+                el.className = `facebook-post rounded-3xl overflow-hidden`;
+                el.innerHTML = `
+                    <div class="aspect-video">
+                        <iframe width="100%" height="100%" src="${video.url}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-sm">${video.description}</p>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        // ==================== UTILIDADES ====================
+        function sharePost() {
+            alert("Enlace copiado (simulado)");
+        }
+
+        function switchTab(tabIndex) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('tab-active', 'text-white'));
+            document.getElementById(`tab-${tabIndex}`).classList.remove('hidden');
+            document.querySelector(`[data-tab="${tabIndex}"]`).classList.add('tab-active', 'text-white');
+        }
+
+        function closeModal() {
+            document.getElementById('media-modal').classList.add('hidden');
+            document.getElementById('media-modal').classList.remove('flex');
+        }
+
+        // ==================== INICIALIZACIÓN ====================
+        async function init() {
+            await checkUser();
+            await loadPosts();
+            await loadStories();
+            await loadMessages();
+            await loadYoutube();
+
+            supabase.auth.onAuthStateChange((event, session) => {
+                if (session) checkUser();
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
